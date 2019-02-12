@@ -39,6 +39,24 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     Route::get('state/{id}', 'StateController@getState');
     Route::post('state', 'StateController@updateState');
     Route::delete('state/{id}', 'StateController@deleteState');
+
+    //region
+    Route::get('region', 'RegionController@listRegions');
+    Route::get('region/{id}', 'RegionController@getRegion');
+    Route::post('region', 'RegionController@updateRegion');
+    Route::delete('region/{id}', 'RegionController@deleteRegion');
+
+    //city
+    Route::get('city', 'CityController@listCities');
+    Route::get('city/{id}', 'CityController@getCity');
+    Route::post('city', 'CityController@updateCity');
+    Route::delete('city/{id}', 'CityController@deleteCity');
+
+    //block
+    Route::get('block', 'BlockController@listBlocks');
+    Route::get('block/{id}', 'BlockController@getBlock');
+    Route::post('block', 'BlockController@updateBlock');
+    Route::delete('block/{id}', 'BlockController@deleteBlock');
 });
 
 

@@ -27,7 +27,7 @@ class CountryController extends Controller
 
         if ($validator->fails()) 
         {
-            return Response::json($validator->errors(), 401);
+            return Response::json($validator->errors(), 400);
         }
 
         if(empty($request->id))

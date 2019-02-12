@@ -11,11 +11,11 @@ class StateController extends Controller
 {
     
     public function listStates(Request $request){
-        return State::all();
+        return State::with('country')->get();
     }
 
     public function getState(Request $request, $id){
-        return State::find($id);
+        return State::with('country')->find($id);
     }
 
     public function updateState(Request $request){
@@ -28,7 +28,7 @@ class StateController extends Controller
 
         if ($validator->fails()) 
         {
-            return Response::json($validator->errors(), 401);
+            return Response::json($validator->errors(), 400);
         }
 
         if(empty($request->id))
