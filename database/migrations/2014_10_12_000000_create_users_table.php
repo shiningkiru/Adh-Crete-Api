@@ -13,6 +13,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::create('designations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('designationTitle')->unique();
+            $table->enum('targetArea', ['admin', 'country', 'state', 'region', 'city', 'block']);
+        });
+
+        Schema::create('access_previleges', function (Blueprint $table) {
+            $table->increments('id');
+            $table->enum('permission', ['allowed', 'denied', 'readonly']);
+            $table->string('moduleName');
+            $table->unsignedInteger('designationId');
+            $table->foreign('designationId')->references('id')->on('designations')->onDelete('cascade'); 
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -70,5 +84,7 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('regions');
         Schema::dropIfExists('states');
         Schema::dropIfExists('countries');
+        Schema::dropIfExists('access_previleges');
+        Schema::dropIfExists('designations');
     }
 }

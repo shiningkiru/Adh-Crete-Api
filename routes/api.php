@@ -57,6 +57,12 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     Route::get('block/{id}', 'BlockController@getBlock');
     Route::post('block', 'BlockController@updateBlock');
     Route::delete('block/{id}', 'BlockController@deleteBlock');
+
+    //designation
+    Route::get('designation', 'DesignationController@listDesignation');
+    Route::get('designation/{id}', 'DesignationController@getDesignation');
+    Route::post('designation', 'DesignationController@updateDesignation');
+    Route::delete('designation/{id}', 'DesignationController@deleteDesignation');
 });
 
 
