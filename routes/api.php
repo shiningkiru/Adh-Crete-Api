@@ -63,6 +63,10 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     Route::get('designation/{id}', 'DesignationController@getDesignation');
     Route::post('designation', 'DesignationController@updateDesignation');
     Route::delete('designation/{id}', 'DesignationController@deleteDesignation');
+
+    //Access previleges
+    Route::get('access-previlege/{id}', 'AccessPrevilegeController@getPermissionByDesignation');
+    Route::post('access-previlege', 'AccessPrevilegeController@updatePermission');
 });
 
 

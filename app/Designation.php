@@ -11,4 +11,9 @@ class Designation extends Model
     ];
 
     public $timestamps = false;
+
+    public function previleges()
+    {
+        return $this->hasMany(AccessPrevileges::class, 'designationId');
+    }
 }
