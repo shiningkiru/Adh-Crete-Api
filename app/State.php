@@ -20,4 +20,9 @@ class State extends Model
     {
         return $this->hasMany(Region::class, 'stateId');
     }
+
+    public function userArea()
+    {
+        return $this->hasMany(UserArea::class, 'stateId');
+    }
 }

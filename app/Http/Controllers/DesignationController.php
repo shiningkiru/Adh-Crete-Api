@@ -22,7 +22,7 @@ class DesignationController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'nullable|exists:designations,id',
             'designationTitle' => 'required|unique:designations,designationTitle,'.$request->id.',id|max:190',
-            'targetArea' => 'required|in:admin,country,state,region,city,block'
+            'targetArea' => 'required|in:admin,general,country,state,region,city,block'
         ]);
 
         if ($validator->fails()) 
@@ -33,13 +33,13 @@ class DesignationController extends Controller
         if(empty($request->id))
         {
             $designation = new Designation();
+            $designation->targetArea = $request->targetArea;
         }
         else
         {
             $designation = Designation::find($request->id);
         }
         $designation->designationTitle = $request->designationTitle;
-        $designation->targetArea = $request->targetArea;
         try {
             $designation->save();
             return $designation;

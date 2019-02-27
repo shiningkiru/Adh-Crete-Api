@@ -15,4 +15,9 @@ class Country extends Model
     {
         return $this->hasMany(State::class, 'countryId');
     }
+
+    public function userArea()
+    {
+        return $this->hasMany(UserArea::class, 'countryId');
+    }
 }

@@ -16,4 +16,9 @@ class Designation extends Model
     {
         return $this->hasMany(AccessPrevileges::class, 'designationId');
     }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'designationId');
+    }
 }

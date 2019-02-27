@@ -24,9 +24,14 @@ class RegisterFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6|max:10',
+            'id' => 'nullable|exists:users,id',
+            'firstName' => 'required|string|max:190',
+            'lastName' => 'nullable|string|max:190',
+            'email' => 'required|email|unique:users,id',
+            'mobileNumber' => 'required|string',
+            'isAdmin' => 'required|in:true,false',
+            'isActive' => 'required|in:true,false',
+            'profilePic' => 'nullable|file',
         ];
     }
 }

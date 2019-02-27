@@ -15,4 +15,9 @@ class Block extends Model
     {
         return $this->belongsTo(City::class, 'cityId');
     }
+
+    public function userArea()
+    {
+        return $this->hasMany(UserArea::class, 'blockId');
+    }
 }

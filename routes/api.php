@@ -67,6 +67,12 @@ Route::group(['middleware' => 'jwt.auth'], function(){
     //Access previleges
     Route::get('access-previlege/{id}', 'AccessPrevilegeController@getPermissionByDesignation');
     Route::post('access-previlege', 'AccessPrevilegeController@updatePermission');
+
+    //User
+    Route::get('user/admin', 'UserController@getAdmin');
+    Route::get('user/staff', 'UserController@getStaff');
+    Route::get('user/{id}', 'UserController@getUserData');
+    Route::post('user', 'AuthController@register');
 });
 
 
